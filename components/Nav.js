@@ -39,10 +39,24 @@ const Nav = () => {
         {navData.map((link, index) => {
           return (
             <Link
-              className={`${link.path === pathname && "text-accent"}`}
+              className={`${
+                link.path === pathname && "text-accent"
+              } relative flex items-center group hover:text-accent transition-all duration-300`}
               href={link.path}
               key={index}
             >
+              {/* Tooltip */}
+              <div className="absolute pr-14 right-0 hidden xl:group-hover:flex">
+                <div className="bg-white relative flex text-primary items-center p-[6px]">
+                  <div className="text-[12px] leading-none font-semibold capitalize">
+                    {link.name}
+                  </div>
+                  {/* Triangle */}
+                  <div className="border-solid border-l-white border-l-8 border-y-transparent border-y-[6px] absolute -right-2"></div>
+                </div>
+              </div>
+
+              {/* Icon */}
               <div>{link.icon}</div>
             </Link>
           );
