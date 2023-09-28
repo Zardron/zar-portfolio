@@ -11,20 +11,21 @@ import { motion } from "framer-motion";
 
 // variants
 import { fadeIn } from "../variants";
+import Circles from "@/components/Circles";
 
 const Home = () => {
   return (
     <div className="bg-primary/60 h-full">
       {/* text */}
       <div className="w-full h-full bg-gradient-to-r from-primary/10 via-black/30 to-black/10">
-        <div className="text-center flex flex-col justify-center xl:pt-40 xl:text-left h-full container mx-auto">
+        <div className="text-center flex flex-col justify-center pt-20 xl:pt-40 xl:text-left h-full container mx-auto">
           {/* title */}
           <motion.h1
             variants={fadeIn("left", 0.2)}
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="h1"
+            className="h1 mb-4 lg:mb-4"
           >
             Transforming Ideas <br /> Into{" "}
             <span className="text-accent">Digital Reality</span>
@@ -35,12 +36,14 @@ const Home = () => {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16"
+            className="max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-4 xl:mb-6 text-justify text-sm lg:text-[18px]"
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, in
-            tempore magni exercitationem perspiciatis voluptas saepe esse id
-            suscipit mollitia commodi sed nemo voluptates veniam reiciendis
-            doloremque aperiam maiores? Aliquid!
+            I'm a Bachelor of Science in Information Technology Graduate at
+            University of Cebu Lapu-Lapu and Manduae (UCLM) - Philippines.
+            <br /> <br />A very ambitious developer. I love to code because if I
+            can think it, I can make it a reality. Also a competitive coder with
+            an amazing ability to develop websites that are both functional and
+            aesthetically pleasing.
           </motion.p>
           {/* btn */}
           <div className="flex justify-center relative xl:hidden">
@@ -70,11 +73,12 @@ const Home = () => {
           animate="show"
           exit="hidden"
           transition={{ duration: 1, ease: "easeInOut" }}
-          className="w-full h-full max-w-[700px] max-h-[678px] absolute -bottom-32 lg:bottom-0 lg:right-[8%]"
+          className="w-full h-full max-w-[500px] max-h-[478px] absolute -bottom-32 lg:bottom-0 lg:right-[8%]"
         >
           <Avatar />
         </motion.div>
       </div>
+      <Circles />
     </div>
   );
 };

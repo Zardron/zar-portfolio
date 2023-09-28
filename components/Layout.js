@@ -9,9 +9,6 @@ const sora = Sora({
 import Nav from "../components/Nav";
 import Header from "../components/Header";
 import TopLeftImg from "../components/TopLeftImg";
-import BottomRightImg from "./BottomRightImg";
-import BottomLeftImg from "./BottomLeftImg";
-import TopRightImg from "./TopRightImg";
 
 const Layout = ({ children }) => {
   return (
@@ -19,9 +16,6 @@ const Layout = ({ children }) => {
       className={`page bg-site text-white bg-cover bg-no-repeat ${sora.variable} font-sora relative`}
     >
       <TopLeftImg />
-      <BottomRightImg />
-      <BottomLeftImg />
-      <TopRightImg />
       <Nav />
       <Header />
       {children}
