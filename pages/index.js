@@ -18,14 +18,14 @@ const Home = () => {
     <div className="bg-primary/60 h-full">
       {/* text */}
       <div className="w-full h-full bg-gradient-to-r from-primary/10 via-black/30 to-black/10">
-        <div className="text-center flex flex-col justify-center pt-20 xl:pt-40 xl:text-left h-full container mx-auto">
+        <div className="text-center flex flex-col justify-center pt-20 sm:pt-26 md:pt-20 lg:pt-28 xl:text-left h-full container mx-auto">
           {/* title */}
           <motion.h1
             variants={fadeIn("left", 0.2)}
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="h1 mb-4 lg:mb-4"
+            className="h1 mb-8 lg:mb-4 text-[40px] lg:text-[50px]"
           >
             Transforming Ideas <br /> Into{" "}
             <span className="text-accent">Digital Reality</span>
@@ -36,9 +36,9 @@ const Home = () => {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-4 xl:mb-6 text-justify text-sm lg:text-[18px]"
+            className="max-w-sm mx-auto xl:mx-0 mb-4 xl:mb-6 text-justify leading-tight text-[12px] md:text-[14px] lg:text-[16px] md:max-w-md lg:max-w-xl xxl:max-w-2xl"
           >
-            I'm a Bachelor of Science in Information Technology Graduate at
+            I&apos;m a Bachelor of Science in Information Technology Graduate at
             University of Cebu Lapu-Lapu and Manduae (UCLM) - Philippines.
             <br /> <br />A very ambitious developer. I love to code because if I
             can think it, I can make it a reality. Also a competitive coder with
@@ -73,7 +73,18 @@ const Home = () => {
           animate="show"
           exit="hidden"
           transition={{ duration: 1, ease: "easeInOut" }}
-          className="w-full h-full max-w-[500px] max-h-[478px] absolute -bottom-32 lg:bottom-0 lg:right-[8%]"
+          className="block xxl:hidden w-full h-full absolute -bottom-32 lg:bottom-0 md:right-0 lg:right-[2%] xxl:right-[8%] lg:max-w-[700px] lg:max-h-[678px]"
+        >
+          <Avatar />
+        </motion.div>
+
+        <motion.div
+          variants={fadeIn("up", 0.5)}
+          initial="hidden"
+          animate="show"
+          exit="hidden"
+          transition={{ duration: 1, ease: "easeInOut" }}
+          className="hidden xxl:block w-full h-full absolute -bottom-32 lg:bottom-0 md:right-0 xxl:right-[2%] "
         >
           <Avatar />
         </motion.div>
