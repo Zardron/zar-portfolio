@@ -107,7 +107,7 @@ export default function HomePage() {
             I specialize in modern web development and building scalable applications across web and mobile. I focus on clean, maintainable code, smooth user experiences, and shipping reliable products quickly.
           </motion.p>
           <motion.a
-            href="/portfolio"
+            href="/projects"
             className="inline-block px-8 py-4 border border-primary text-primary rounded-lg hover:bg-primary/10 transition-all duration-300 font-medium"
             custom={4}
             initial="hidden"
@@ -129,10 +129,8 @@ export default function HomePage() {
         >
           <div className="relative">
             {/* Gradient border effect */}
-            <motion.div
-              className="absolute -inset-1 bg-linear-to-r from-primary to-emerald-300 rounded-2xl blur-sm opacity-50"
-              animate={{ opacity: [0.3, 0.6, 0.3] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+            <div
+              className="absolute -inset-1 bg-linear-to-r from-primary to-emerald-300 rounded-2xl animate-glow-pulse"
             />
             <div className="relative">
               <Image

@@ -6,8 +6,10 @@ import { menuItems } from './LeftPanel'
 
 export default function PageCounter() {
   const pathname = usePathname()
-  
-  const currentItem = menuItems.find(item => item.href === pathname)
+
+  const currentItem = menuItems.find(item =>
+    item.href === '/' ? pathname === '/' : pathname.startsWith(item.href)
+  )
   const currentSequence = currentItem?.sequence || "01"
   const totalPages = String(menuItems.length).padStart(2, '0')
 

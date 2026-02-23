@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { motion, AnimatePresence, animate } from "framer-motion";
 
-const STORAGE_KEY = "zar_portfolio_loaded";
+const STORAGE_KEY = "zar_projects_loaded";
 const TOTAL_DURATION_MS = 4500;
 const PROGRESS_DURATION_MS = 3200;
 const SHARD_COLS = 20;
@@ -11,7 +11,7 @@ const SHARD_ROWS = 16;
 const SHARD_COUNT = SHARD_COLS * SHARD_ROWS;
 
 const BOOT_LINES = [
-  "[ 0.00 ] Loading portfolio",
+  "[ 0.00 ] Loading projects",
   "[ 0.12 ] Fetching projects",
   "[ 0.24 ] Loading experience",
   "[ 0.36 ] Preparing skills & stack",

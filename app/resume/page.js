@@ -1,4 +1,4 @@
-import PageLayout from "../components/PageLayout";
+import ResumeContent from "./ResumeContent";
 
 export const metadata = {
   title: "Resume | Zardron",
@@ -7,15 +7,6 @@ export const metadata = {
 
 export default function ResumePage() {
   return (
-    <PageLayout>
-      <div className="max-w-2xl">
-        <h1 className="text-4xl font-bold text-white mb-6">
-          <span className="text-primary">04.</span> Resume
-        </h1>
-        <p className="text-text-muted text-lg">
-          Content coming soon...
-        </p>
-      </div>
-    </PageLayout>
+    <ResumeContent />
   );
 }

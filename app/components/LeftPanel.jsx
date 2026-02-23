@@ -21,7 +21,7 @@ export const menuItems = [
   { name: 'About', href: '/about', sequence: "02" },
   { name: 'Services', href: '/services', sequence: "03" },
   { name: 'Resume', href: '/resume', sequence: "04" },
-  { name: 'Portfolio', href: '/portfolio', sequence: "05" },
+  { name: 'Projects', href: '/projects', sequence: "05" },
   { name: 'Blog', href: '/blog', sequence: "06" },
   { name: 'Contact', href: '/contacts', sequence: "07" }
 ]
@@ -50,15 +50,20 @@ const LeftPanel = () => {
         transition={{ delay: 0.1, duration: 0.4 }}
       >
         {/* Avatar with gradient border */}
-        <div className='gradient-border mb-5'>
-          <div className='gradient-border-inner p-1'>
-            <Image 
-              src='/avatar.jpg' 
-              alt='Zardron' 
-              width={120} 
-              height={120} 
-              className='w-28 h-28 object-cover rounded-[calc(1rem-6px)]' 
-            />
+        <div className='relative mb-5'>
+          {/* Animated glow background behind the avatar */}
+          <div className='absolute inset-0 rounded-2xl bg-primary/40 animate-glow-pulse' />
+
+          <div className='gradient-border relative z-10'>
+            <div className='gradient-border-inner p-1'>
+              <Image
+                src='/avatar.jpg'
+                alt='Zardron'
+                width={120}
+                height={120}
+                className='w-28 h-28 object-cover rounded-[calc(1rem-6px)]'
+              />
+            </div>
           </div>
         </div>
 
@@ -104,7 +109,7 @@ const LeftPanel = () => {
       <nav className='flex-1 px-5 py-8 overflow-y-auto'>
         <ul className='flex flex-col gap-1'>
           {menuItems.map((item, i) => {
-            const isActive = pathname === item.href
+            const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href)
             return (
               <motion.li
                 key={item.name}
@@ -113,13 +118,12 @@ const LeftPanel = () => {
                 animate="visible"
                 variants={navItemVariants}
               >
-                <Link 
-                  href={item.href} 
-                  className={`group flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 relative ${
-                    isActive 
-                      ? 'text-white' 
-                      : 'text-text-muted hover:text-white hover:bg-white/5'
-                  }`}
+                <Link
+                  href={item.href}
+                  className={`group flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 relative ${isActive
+                    ? 'text-white'
+                    : 'text-text-muted hover:text-white hover:bg-white/5'
+                    }`}
                 >
                   {isActive && (
                     <motion.span
@@ -128,14 +132,12 @@ const LeftPanel = () => {
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
-                  <span className={`font-display text-xs transition-colors ${
-                    isActive ? 'text-primary font-semibold' : 'text-primary/50 group-hover:text-primary'
-                  }`}>
+                  <span className={`font-display text-xs transition-colors ${isActive ? 'text-primary font-semibold' : 'text-primary/50 group-hover:text-primary'
+                    }`}>
                     {item.sequence}
                   </span>
-                  <span className={`font-medium text-[15px] tracking-wide ${
-                    isActive ? 'font-semibold' : ''
-                  }`}>
+                  <span className={`font-medium text-[15px] tracking-wide ${isActive ? 'font-semibold' : ''
+                    }`}>
                     {item.name}
                   </span>
                 </Link>

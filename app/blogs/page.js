@@ -1,4 +1,4 @@
-import BlogsContent from "../blogs/BlogsContent";
+import BlogsContent from "./BlogsContent";
 
 export const metadata = {
   title: "Blog | Zardron",
@@ -6,6 +6,7 @@ export const metadata = {
     "Articles and long-form writing by Zardron on full-stack development, tooling, and modern web technologies.",
 };
 
-export default function BlogPage() {
+export default function BlogsPage() {
   return <BlogsContent />;
 }
+
