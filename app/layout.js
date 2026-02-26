@@ -16,15 +16,21 @@ export const metadata = {
   },
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="antialiased">
+      <body className="antialiased overflow-x-hidden">
         <FirstLoadLoader />
         <LeftPanel />
         <PageCounter />
         <ParticlesContainer />
-        <main className="ml-72 min-h-screen">
+        <main className="lg:ml-72 pt-14 lg:pt-0 min-h-screen">
           {children}
         </main>
       </body>

@@ -58,8 +58,8 @@ function TypingEffect({ phrases, typingSpeed = 100, deletingSpeed = 60, pauseTim
 
 export default function HomePage() {
   return (
-    <div className="flex items-center justify-center min-h-screen px-8">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-7xl w-full">
+    <div className="flex items-center justify-center min-h-screen px-4 sm:px-8 py-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center max-w-7xl w-full">
         {/* Left Column - Details */}
         <div className="order-2 lg:order-1">
           <motion.p
@@ -72,7 +72,7 @@ export default function HomePage() {
             Hi, my name is
           </motion.p>
           <motion.h1
-            className="text-5xl md:text-7xl font-bold text-white mb-4"
+            className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-4"
             custom={1}
             initial="hidden"
             animate="visible"
@@ -81,7 +81,7 @@ export default function HomePage() {
             Zardron<span className="text-primary">.</span>
           </motion.h1>
           <motion.h2
-            className="text-4xl md:text-5xl font-bold text-text-muted mb-6 whitespace-nowrap"
+            className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-text-muted mb-6"
             custom={2}
             initial="hidden"
             animate="visible"

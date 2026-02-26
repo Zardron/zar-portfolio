@@ -15,7 +15,7 @@ export default function PageCounter() {
 
   return (
     <motion.div
-      className='fixed top-8 right-8 z-50'
+      className='fixed top-8 right-8 z-50 hidden lg:block'
       initial={{ opacity: 0, y: -12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2, duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}

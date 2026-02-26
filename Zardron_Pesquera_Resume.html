@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zardron Angelo G. Pesquera - Full Stack Developer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.4;
+            color: #333;
+            background: #fff;
+            font-size: 10px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+            background: white;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #1e5799;
+            position: relative;
+        }
+        
+        /* Download Button */
+        .download-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #1e5799;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: background-color 0.2s ease;
+        }
+        
+        .download-btn:hover {
+            background: #154a7a;
+        }
+        
+        .download-btn:active {
+            transform: translateY(1px);
+        }
+        
+        .name {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e5799;
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+        }
+        
+        .title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #666;
+            margin-bottom: 12px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            font-size: 10px;
+            color: #555;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .social-info {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            font-size: 10px;
+            color: #555;
+            margin-top: 8px;
+        }
+        
+        .social-info a {
+            color: #1e5799;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .social-info a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Sections */
+        .section {
+            margin-bottom: 18px;
+        }
+        
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1e5799;
+            margin-bottom: 10px;
+            padding-bottom: 3px;
+            border-bottom: 2px solid #e5e7eb;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Summary */
+        .summary {
+            font-size: 11px;
+            line-height: 1.5;
+            color: #555;
+            text-align: justify;
+        }
+        
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .skill-category {
+            margin-bottom: 12px;
+        }
+        
+        .skill-category h3 {
+            font-size: 10px;
+            font-weight: 600;
+            color: #1e5799;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+        
+        .skill-item {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 8px;
+            color: #374151;
+            border: 1px solid #e5e7eb;
+        }
+        
+        /* Experience */
+        .experience-item {
+            margin-bottom: 15px;
+            page-break-inside: avoid;
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+        }
+        
+        .job-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #1e5799;
+        }
+        
+        .company-info {
+            text-align: right;
+            font-size: 10px;
+            color: #666;
+        }
+        
+        .company-name {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .job-duration {
+            font-style: italic;
+            color: #888;
+        }
+        
+        .job-location {
+            color: #666;
+        }
+        
+        .responsibilities {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .responsibilities li {
+            position: relative;
+            padding-left: 12px;
+            margin-bottom: 2px;
+            font-size: 9px;
+            color: #555;
+            line-height: 1.3;
+        }
+        
+        .responsibilities li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #1e5799;
+            font-weight: bold;
+        }
+        
+        /* Projects */
+        .projects-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .project-item {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 3px solid #1e5799;
+        }
+        
+        .project-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: #1e5799;
+            margin-bottom: 4px;
+        }
+        
+        .project-tech {
+            font-size: 8px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+        
+        .project-desc {
+            font-size: 9px;
+            color: #555;
+            line-height: 1.3;
+        }
+        
+        /* Certifications */
+        .certification-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .certification-item:last-child {
+            border-bottom: none;
+        }
+        
+        .certification-name {
+            font-size: 10px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .certification-issuer {
+            font-size: 9px;
+            color: #666;
+        }
+        
+        .certification-date {
+            font-size: 8px;
+            color: #888;
+            font-style: italic;
+        }
+        
+        /* Languages */
+        .languages-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .language-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .language-name {
+            font-size: 10px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .language-level {
+            font-size: 8px;
+            color: #666;
+            background: #e5e7eb;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        
+        /* Additional Info */
+        .additional-info {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #1e5799;
+        }
+        
+        .additional-info h3 {
+            font-size: 10px;
+            font-weight: 600;
+            color: #1e5799;
+            margin-bottom: 6px;
+        }
+        
+        .additional-info ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .additional-info li {
+            position: relative;
+            padding-left: 12px;
+            margin-bottom: 3px;
+            font-size: 9px;
+            color: #555;
+            line-height: 1.3;
+        }
+        
+        .additional-info li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #1e5799;
+            font-weight: bold;
+        }
+        
+        /* Education */
+        .education-item {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        
+        .education-details h3 {
+            font-size: 11px;
+            font-weight: 600;
+            color: #1e5799;
+            margin-bottom: 2px;
+        }
+        
+        .education-details p {
+            font-size: 9px;
+            color: #666;
+            margin-bottom: 1px;
+        }
+        
+        /* Print styles */
+        @media print {
+            .download-btn {
+                display: none !important;
+            }
+            
+            body {
+                font-size: 9px;
+            }
+            
+            .container {
+                padding: 12px;
+                max-width: none;
+            }
+            
+            .name {
+                font-size: 24px;
+            }
+            
+            .title {
+                font-size: 14px;
+            }
+            
+            .section {
+                margin-bottom: 15px;
+            }
+            
+            .experience-item {
+                margin-bottom: 12px;
+            }
+            
+            .job-title {
+                font-size: 11px;
+            }
+            
+            .responsibilities li {
+                font-size: 8px;
+            }
+        }
+        
+        /* Page breaks */
+        .page-break {
+            page-break-before: always;
+        }
+        
+        /* Avoid orphaned content */
+        .experience-item, .skill-category, .project-item {
+            page-break-inside: avoid;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <a href="#" class="download-btn" onclick="window.print()">
+                📄 Download PDF
+            </a>
+            <h1 class="name">Zardron Angelo G. Pesquera</h1>
+            <p class="title">Full Stack Developer</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>[EMAIL_ADDRESS]</span>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <a href="tel:+639524858344" style="color: #555; text-decoration: none;">+63 952 485 8344</a>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Lapu-Lapu City, Cebu, Philippines</span>
+                </div>
+                <div class="contact-item">
+                    <span>🎂</span>
+                    <span>June 18, 1993</span>
+                </div>
+            </div>
+            <div class="social-info">
+                <div class="contact-item">
+                    <span>https://zardronpesquera-portfolio.vercel.app</span>
+                </div>
+                <div class="contact-item">
+                    <span>https://linkedin.com/in/zardron-pesquera</span>
+                </div>
+                <div class="contact-item">
+                    <span>https://github.com/zardron</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Summary -->
+        <div class="section">
+            <h2 class="section-title">Professional Summary</h2>
+            <p class="summary">
+                Experienced Full Stack Developer with over 5+ years of expertise in web, mobile, and software development. 
+                Specialized in creating responsive user interfaces, building robust backend systems, and implementing 
+                cutting-edge technologies including Web 3D, AR, and VR applications. Focused on writing clean, maintainable code, delivering smooth user experiences, and shipping reliable products quickly while maintaining optimal performance and scalability.
+            </p>
+        </div>
+
+        <!-- Technical Skills -->
+        <div class="section">
+            <h2 class="section-title">Technical Skills</h2>
+            
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Frontend Technologies</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">HTML5</span>
+                        <span class="skill-item">CSS3</span>
+                        <span class="skill-item">SCSS</span>
+                        <span class="skill-item">JavaScript</span>
+                        <span class="skill-item">TypeScript</span>
+                        <span class="skill-item">React.js</span>
+                        <span class="skill-item">Next.js</span>
+                        <span class="skill-item">Three.js</span>
+                        <span class="skill-item">MyWebAR</span>
+                        <span class="skill-item">8thwall</span>
+                        <span class="skill-item">Unreal Engine</span>
+                        <span class="skill-item">Tailwind CSS</span>
+                        <span class="skill-item">Bootstrap</span>
+                        <span class="skill-item">Material-UI</span>
+                        <span class="skill-item">Shadcn/ui</span>
+                        <span class="skill-item">Radix UI</span>
+                        <span class="skill-item">TanStack Query</span>
+                        <span class="skill-item">Redux</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Backend Technologies</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">Node.js</span>
+                        <span class="skill-item">Express.js</span>
+                        <span class="skill-item">PHP</span>
+                        <span class="skill-item">Laravel</span>
+                        <span class="skill-item">C#</span>
+                        <span class="skill-item">ASP.NET</span>
+                        <span class="skill-item">MySQL</span>
+                        <span class="skill-item">MongoDB</span>
+                        <span class="skill-item">PostgreSQL</span>
+                        <span class="skill-item">GraphQL</span>
+                        <span class="skill-item">Supabase</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Tools & Others</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">Docker</span>
+                        <span class="skill-item">GitHub</span>
+                        <span class="skill-item">GitLab</span>
+                        <span class="skill-item">JIRA</span>
+                        <span class="skill-item">Cisco</span>
+                        <span class="skill-item">Figma</span>
+                        <span class="skill-item">Photoshop</span>
+                        <span class="skill-item">Illustrator</span>
+                        <span class="skill-item">InDesign</span>
+                        <span class="skill-item">Adobe Flash</span>
+                        <span class="skill-item">Ahrefs</span>
+                        <span class="skill-item">SEMrush</span>
+                        <span class="skill-item">Google Search Console</span>
+                        <span class="skill-item">Screaming Frog</span>
+                        <span class="skill-item">Lighthouse</span>
+                        <span class="skill-item">Google Analytics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Experience -->
+        <div class="section">
+            <h2 class="section-title">Professional Experience</h2>
+            
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Full-Stack Developer</h3>
+                    </div>
+                    <div class="company-info">
+                        <div class="company-name">Freelance</div>
+                        <div class="job-duration">May 2025 - Present</div>
+                        <div class="job-location">Remote</div>
+                    </div>
+                </div>
+                <ul class="responsibilities">
+                    <li>Work independently as a freelance developer, managing multiple client projects simultaneously</li>
+                    <li>Develop custom web applications and websites for diverse clients across various industries</li>
+                    <li>Build responsive and modern user interfaces using React.js and Next.js with TypeScript, CSS3, Tailwind CSS, shadcn/ui, and styled-components</li>
+                    <li>Create server-side rendered and static applications using Next.js for optimal performance and SEO</li>
+                    <li>Develop robust backend systems using Node.js and TypeScript for RESTful API development</li>
+                    <li>Design and manage MongoDB databases, implementing efficient data models, schemas, and queries</li>
+                    <li>Integrate Supabase for authentication, real-time databases, and backend-as-a-service functionality</li>
+                    <li>Handle client communications, project scoping, and deliver high-quality solutions within agreed timelines</li>
+                    <li>Provide technical consulting and development services for startups and established businesses</li>
+                    <li>Optimize application performance, ensure cross-platform compatibility, and implement best practices</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Senior Engineer</h3>
+                    </div>
+                    <div class="company-info">
+                        <div class="company-name">Nagarro</div>
+                        <div class="job-duration">Jun 2024 - Jul 2025 · 1 yr 2 mos</div>
+                        <div class="job-location">India & UAE · Remote</div>
+                    </div>
+                </div>
+                <ul class="responsibilities">
+                    <li>Assist Nagarro developers with projects where our company has more expertise</li>
+                    <li>Collaborate with developers from both RipeConcepts and Nagarro teams</li>
+                    <li>Provide technical support and guidance to development teams</li>
+                    <li>Maintain readiness for new project assignments and technology stack requirements</li>
+                    <li>Support cross-team collaboration between RipeConcepts and Nagarro developers</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Senior Application Developer</h3>
+                    </div>
+                    <div class="company-info">
+                        <div class="company-name">RipeConcepts, Inc.</div>
+                        <div class="job-duration">Jun 2024 - Jul 2025 · 1 yr 2 mos</div>
+                        <div class="job-location">Cebu, Central Visayas, Philippines · On-site</div>
+                    </div>
+                </div>
+                <ul class="responsibilities">
+                    <li>Create Real-time Web 3D, Web AR and Web VR programs</li>
+                    <li>Code, test, deploy, and maintain all the back-end components of the product</li>
+                    <li>Optimize application performance by properly managing the central database and responses to front-end requests</li>
+                    <li>Assist front-end developers with system integration</li>
+                    <li>Create high-performance, testable, reusable, and scalable code</li>
+                    <li>Perform diagnostic tests and troubleshooting for any issues that arise</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Web Developer</h3>
+                    </div>
+                    <div class="company-info">
+                        <div class="company-name">RAKtherm Global (Plumbing)</div>
+                        <div class="job-duration">Oct 2022 - Apr 2024 · 1 yr 7 mos</div>
+                        <div class="job-location">Al Jazirah Al Hamra, Ras al-Khaimah, United Arab Emirates · On-site</div>
+                    </div>
+                </div>
+                <ul class="responsibilities">
+                    <li>Develop and maintain company websites and web applications</li>
+                    <li>Create responsive user interfaces and interactive components</li>
+                    <li>Implement new features and functionality as requested</li>
+                    <li>Ensure website performance and optimization</li>
+                    <li>Create repository for company web applications</li>
+                    <li>Update web application from old technology stack to new stack</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">ReactJs Developer</h3>
+                    </div>
+                    <div class="company-info">
+                        <div class="company-name">Clockwork Logistics Systems</div>
+                        <div class="job-duration">Jul 2022 - Oct 2022 · 4 mos</div>
+                        <div class="job-location">Cebu, Central Visayas, Philippines</div>
+                    </div>
+                </div>
+                <ul class="responsibilities">
+                    <li>Develop and maintain web applications using React.js</li>
+                    <li>Create responsive user interfaces and interactive components</li>
+                    <li>Collaborate with backend developers for API integration</li>
+                    <li>Optimize application performance and user experience</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Software Engineer</h3>
+                    </div>
+                    <div class="company-info">
+                        <div class="company-name">Accenture</div>
+                        <div class="job-duration">Jul 2021 - Jul 2022 · 1 yr 1 mo</div>
+                        <div class="job-location">Cebu, Central Visayas, Philippines</div>
+                    </div>
+                </div>
+                <ul class="responsibilities">
+                    <li>Develop and maintain enterprise-level web applications</li>
+                    <li>Collaborate with cross-functional teams to deliver high-quality software solutions</li>
+                    <li>Implement best practices for code quality and software development</li>
+                    <li>Participate in agile development processes and sprint planning</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Web Developer</h3>
+                    </div>
+                    <div class="company-info">
+                        <div class="company-name">Lear Corporation</div>
+                        <div class="job-duration">Apr 2019 - Dec 2020 · 1 yr 9 mos</div>
+                        <div class="job-location">Central Visayas, Philippines</div>
+                    </div>
+                </div>
+                <ul class="responsibilities">
+                    <li>Develop internal web applications for company processes</li>
+                    <li>Create and maintain company intranet systems</li>
+                    <li>Implement database-driven web solutions</li>
+                    <li>Provide technical support for web-based tools</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Notable Projects -->
+        <div class="section">
+            <h2 class="section-title">Notable Projects</h2>
+            <div class="projects-container">
+                <div class="project-item">
+                    <div class="project-title">TechEventX</div>
+                    <div class="project-tech">Next.js 16, React 19, TypeScript, MongoDB, Stripe</div>
+                    <div class="project-desc">Developed a multi-role event management platform with QR digital tickets, organizer analytics, and dual Stripe/PayMongo integration.</div>
+                </div>
+                <div class="project-item">
+                    <div class="project-title">ResumeIQHub</div>
+                    <div class="project-tech">React 19, Node.js, Socket.io, Gemini AI</div>
+                    <div class="project-desc">Built an AI-powered recruitment platform featuring AI resume building, real-time job matching, and live socket messaging between recruiters and candidates.</div>
+                </div>
+                <div class="project-item">
+                    <div class="project-title">ZM Collection</div>
+                    <div class="project-tech">Next.js 16, React 19, TypeScript, Tailwind CSS</div>
+                    <div class="project-desc">Created a fully responsive e-commerce storefront for beauty & fashion with a comprehensive admin dashboard for handling orders and customers.</div>
+                </div>
+                <div class="project-item">
+                    <div class="project-title">Web 3D Product Visualization</div>
+                    <div class="project-tech">Three.js, React, Node.js, MongoDB</div>
+                    <div class="project-desc">Developed interactive 3D product visualization platform for a known Motorcycle Company, enabling customers to view products in 3D space with real-time customization options.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Languages -->
+        <div class="section">
+            <h2 class="section-title">Languages</h2>
+            <div class="languages-container">
+                <div class="language-item">
+                    <span class="language-name">English</span>
+                    <span class="language-level">Conversational</span>
+                </div>
+                <div class="language-item">
+                    <span class="language-name">Filipino (Tagalog)</span>
+                    <span class="language-level">Native</span>
+                </div>
+                <div class="language-item">
+                    <span class="language-name">Cebuano</span>
+                    <span class="language-level">Native</span>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Education -->
+        <div class="section">
+            <h2 class="section-title">Education</h2>
+            <div class="education-item">
+                <div class="education-details">
+                    <h3>University of Cebu - LM</h3>
+                    <p>Cebu, Philippines</p>
+                    <p>BS - Information Technology (BSIT)</p>
+                    <p>March 2020</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

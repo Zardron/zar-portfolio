@@ -3,9 +3,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { FaFacebook, FaLinkedin, FaInstagram, FaGithub } from 'react-icons/fa'
-import { HiOutlineLocationMarker } from 'react-icons/hi'
+import { HiOutlineLocationMarker, HiMenu, HiX, HiDownload } from 'react-icons/hi'
 
 const navItemVariants = {
   hidden: { opacity: 0, x: -12 },
@@ -27,21 +28,15 @@ export const menuItems = [
 ]
 
 const socialLinks = [
-  { icon: FaGithub, href: '#', label: 'GitHub' },
-  { icon: FaLinkedin, href: '#', label: 'LinkedIn' },
-  { icon: FaInstagram, href: '#', label: 'Instagram' },
-  { icon: FaFacebook, href: '#', label: 'Facebook' },
+  { icon: FaGithub, href: 'https://github.com/Zardron', label: 'GitHub' },
+  { icon: FaLinkedin, href: 'https://www.linkedin.com/in/zardron-angelo-pesquera-89b8961ba/', label: 'LinkedIn' },
+  { icon: FaInstagram, href: 'https://www.instagram.com/itsmezardron/', label: 'Instagram' },
+  { icon: FaFacebook, href: 'https://www.facebook.com/zardron.pesquera', label: 'Facebook' },
 ]
 
-const LeftPanel = () => {
-  const pathname = usePathname()
+function SidebarContent({ pathname, onNavClick }) {
   return (
-    <motion.div
-      className='glass fixed top-0 left-0 flex flex-col h-screen w-72 border-r border-white/5'
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-    >
+    <>
       {/* Profile Section */}
       <motion.div
         className='flex flex-col items-center pt-10 pb-8 px-6'
@@ -51,9 +46,7 @@ const LeftPanel = () => {
       >
         {/* Avatar with gradient border */}
         <div className='relative mb-5'>
-          {/* Animated glow background behind the avatar */}
           <div className='absolute inset-0 rounded-2xl bg-primary/40 animate-glow-pulse' />
-
           <div className='gradient-border relative z-10'>
             <div className='gradient-border-inner p-1'>
               <Image
@@ -100,6 +93,22 @@ const LeftPanel = () => {
             </motion.a>
           ))}
         </div>
+
+        {/* Download Resume Button */}
+        <motion.a
+          href='/PESQUERA - CV.pdf'
+          target='_blank'
+          rel='noopener noreferrer'
+          className='mt-6 flex items-center justify-center gap-2 w-full max-w-[200px] px-4 py-2.5 rounded-xl bg-primary/10 text-primary border border-primary/20 hover:bg-primary hover:text-background transition-all duration-300 text-sm font-semibold tracking-wide'
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.3 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          <HiDownload className='w-5 h-5' />
+          Download Resume
+        </motion.a>
       </motion.div>
 
       {/* Divider */}
@@ -120,6 +129,7 @@ const LeftPanel = () => {
               >
                 <Link
                   href={item.href}
+                  onClick={onNavClick}
                   className={`group flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 relative ${isActive
                     ? 'text-white'
                     : 'text-text-muted hover:text-white hover:bg-white/5'
@@ -158,7 +168,94 @@ const LeftPanel = () => {
           &copy; 2026 Zardron
         </p>
       </motion.div>
-    </motion.div>
+    </>
+  )
+}
+
+const LeftPanel = () => {
+  const pathname = usePathname()
+  const [mobileOpen, setMobileOpen] = useState(false)
+
+  // Close drawer on route change
+  useEffect(() => {
+    setMobileOpen(false)
+  }, [pathname])
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [mobileOpen])
+
+  return (
+    <>
+      {/* ── Desktop sidebar (hidden on mobile) ── */}
+      <motion.div
+        className='glass fixed top-0 left-0 flex-col h-screen w-72 border-r border-white/5 hidden lg:flex'
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+      >
+        <SidebarContent pathname={pathname} onNavClick={undefined} />
+      </motion.div>
+
+      {/* ── Mobile top bar ── */}
+      <div className='lg:hidden fixed top-0 left-0 right-0 z-50 glass border-b border-white/5 px-4 h-14 flex items-center justify-between'>
+        <div className='flex items-center gap-3'>
+          <div className='w-8 h-8 rounded-lg overflow-hidden border border-primary/30'>
+            <Image src='/avatar.jpg' alt='Zardron' width={32} height={32} className='object-cover w-full h-full' />
+          </div>
+          <span className='font-display font-bold text-white text-sm tracking-tight'>ZARDRON<span className='text-primary'>.</span></span>
+        </div>
+        <button
+          onClick={() => setMobileOpen(true)}
+          className='w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center text-text-muted hover:text-primary hover:bg-primary/10 transition-colors'
+          aria-label='Open menu'
+        >
+          <HiMenu className='w-5 h-5' />
+        </button>
+      </div>
+
+      {/* ── Mobile drawer overlay ── */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              className='lg:hidden fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm'
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileOpen(false)}
+            />
+
+            {/* Drawer */}
+            <motion.div
+              className='lg:hidden fixed top-0 left-0 h-full w-72 z-[70] glass border-r border-white/5 flex flex-col overflow-y-auto'
+              initial={{ x: '-100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-100%' }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            >
+              {/* Close button */}
+              <button
+                onClick={() => setMobileOpen(false)}
+                className='absolute top-4 right-4 w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-text-muted hover:text-primary hover:bg-primary/10 transition-colors'
+                aria-label='Close menu'
+              >
+                <HiX className='w-4 h-4' />
+              </button>
+
+              <SidebarContent pathname={pathname} onNavClick={() => setMobileOpen(false)} />
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   )
 }
 
